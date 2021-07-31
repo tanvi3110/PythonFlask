@@ -4,7 +4,11 @@ from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
-app = Flask(__name__)
+app = Flask(__name__,
+            instance_relative_config=False,
+            template_folder="templates",
+            static_folder="static"
+            )
 mysql = MySQL(cursorclass=DictCursor)
 
 app.config['MYSQL_DATABASE_HOST'] = 'db'
